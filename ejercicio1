@@ -1,0 +1,142 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Cupertino and Material Alerts"),
+        ),
+        body: Center(
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              ElevatedButton(
+                child: Text("Show Material Alert"),
+                onPressed: () {
+                  _showMaterialAlert(context);
+                },
+              ),
+              CupertinoButton(
+                child: Text("Show Cupertino Alert"),
+                onPressed: () {
+                  _showCupertinoAlert(context);
+                },
+              ),
+              ElevatedButton(
+                child: Text("Show Material Alert with Options"),
+                onPressed: () {
+                  _showMaterialAlertWithOptions(context);
+                },
+              ),
+              CupertinoButton(
+                child: Text("Show Cupertino Alert with Options"),
+                onPressed: () {
+                  _showCupertinoAlertWithOptions(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showMaterialAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Material Alert'),
+          content: Text('This is a simple Material alert'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showCupertinoAlert(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text('Cupertino Alert'),
+          content: Text('This is a simple Cupertino alert'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showMaterialAlertWithOptions(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Material Alert with Options'),
+          content: Text('This is a Material alert with options'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showCupertinoAlertWithOptions(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text('Cupertino Alert with Options'),
+          content: Text('This is a Cupertino alert with options'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            CupertinoDialogAction(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
