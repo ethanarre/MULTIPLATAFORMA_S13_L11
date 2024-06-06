@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material and Cupertino Controls',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Material and Cupertino Controls'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              OutlinedButton(
+                onPressed: () {
+                  print('Material Outlined Button pressed');
+                },
+                child: Text('Material Outlined Button'),
+              ),
+              SizedBox(height: 20),
+              CupertinoSegmentedControl(
+                children: {
+                  'Option 1': Text('Option 1'),
+                  'Option 2': Text('Option 2'),
+                },
+                onValueChanged: (value) {
+                  print('Cupertino Segmented Control changed to $value');
+                },
+              ),
+              SizedBox(height: 20),
+              Switch(
+                value: true,
+                onChanged: (value) {
+                  print('Material Switch changed to $value');
+                },
+              ),
+              SizedBox(height: 20),
+              CupertinoSwitch(
+                value: true,
+                onChanged: (value) {
+                  print('Cupertino Switch changed to $value');
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
